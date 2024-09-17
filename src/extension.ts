@@ -26,9 +26,14 @@ export function activate(context: vscode.ExtensionContext) {
             stream.markdown(vscode.l10n.t('Welcome to the dads taxi chat assistant! 🚕🚕🚕'));
             stream.markdown(vscode.l10n.t('You can book a taxi with `@dadstaxi /book` or check for your current bookings `@dadstaxi /bookings`'));
         }
-        if (request.command === 'book') {
+        else if (request.command === 'book') {
           //return a message
-            stream.markdown(vscode.l10n.t('Booked taxi ' + request.prompt));
+            stream.markdown(vscode.l10n.t('Booked taxi ' + request.prompt + ' \n\n'));
+            stream.markdown(vscode.l10n.t('Thank you for booking a taxi with dads taxi! 🚕🚕🚕'));
+        }        
+        else if (request.command === 'bookings') {
+          //return a message
+            stream.markdown(vscode.l10n.t('you have way too many bookings. Let poor dad rest! \n'));
             stream.markdown(vscode.l10n.t('Thank you for booking a taxi with dads taxi! 🚕🚕🚕'));
         }        
         else if (request.command === 'randomTeach') {
@@ -113,7 +118,7 @@ export function activate(context: vscode.ExtensionContext) {
     // when you type `@`, and can contribute sub-commands in the chat input
     // that appear when you type `/`.
     const cat = vscode.chat.createChatParticipant(CAT_PARTICIPANT_ID, handler);
-    cat.iconPath = vscode.Uri.joinPath(context.extensionUri, 'cat.jpeg');
+    cat.iconPath = vscode.Uri.joinPath(context.extensionUri, 'taxi-image.jpg');
     cat.followupProvider = {
         provideFollowups(result: ICatChatResult, context: vscode.ChatContext, token: vscode.CancellationToken) {
             return [{
