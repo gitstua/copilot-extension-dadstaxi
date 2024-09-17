@@ -28,13 +28,22 @@ export function activate(context: vscode.ExtensionContext) {
     }
     else if (request.command === 'book') {
       //return a message
-      stream.markdown(vscode.l10n.t('Booked taxi ' + request.prompt + ' \n\n'));
+      stream.markdown(vscode.l10n.t('**Booked taxi: ' + request.prompt + '** \n\n'));
       stream.markdown(vscode.l10n.t('Thank you for booking a taxi with dads taxi! 🚕🚕🚕'));
     }
     else if (request.command === 'bookings') {
       //return a message
       stream.markdown(vscode.l10n.t('you have way too many bookings. Let poor dad rest! \n'));
       stream.markdown(vscode.l10n.t('Thank you for booking a taxi with dads taxi! 🚕🚕🚕'));
+    }
+    else if (request.command === 'examplebooking') {
+      stream.progress('@dadstaxi `/book` pickup Dog from Vet at 3PM Saturday ');
+      stream.markdown(vscode.l10n.t('Booked taxi: pickup Dog from Vet at 3PM Saturday \n\n'));
+      stream.markdown(vscode.l10n.t('Thank you for booking a taxi with dads taxi! 🚕🚕🚕'));
+
+      logger.logUsage('request', { kind: 'examplebooking' });
+      return { metadata: { command: 'examplebooking' } };
+
     }
     else if (request.command === 'randomTeach') {
       stream.progress('Picking the right topic to teach...');
@@ -115,7 +124,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     logger.logUsage('request', { kind: '' });
     return { metadata: { command: '' } };
-};
+  };
 
   // Chat participants appear as top-level options in the chat input
   // when you type `@`, and can contribute sub-commands in the chat input
@@ -125,9 +134,9 @@ export function activate(context: vscode.ExtensionContext) {
   cat.followupProvider = {
     provideFollowups(result: ICatChatResult, context: vscode.ChatContext, token: vscode.CancellationToken) {
       return [{
-        prompt: 'let us play',
-        label: vscode.l10n.t('Play with the cat'),
-        command: 'play'
+        prompt: 'create a sample booking',
+        label: vscode.l10n.t('Create a booking'),
+        command: 'examplebooking'
       } satisfies vscode.ChatFollowup];
     }
   };
