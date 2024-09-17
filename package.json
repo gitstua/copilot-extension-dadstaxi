@@ -22,7 +22,7 @@
 				"id": "chat-sample.dadstaxi",
 				"fullName": "DadsTaxi",
 				"name": "dadstaxi",
-				"description": "Meow! What can I teach you?",
+				"description": "are you going to /book or check /bookings?",
 				"isSticky": true,
 				"commands": [
 					{
