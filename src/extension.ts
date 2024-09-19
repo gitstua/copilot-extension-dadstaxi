@@ -123,16 +123,14 @@ const html = ``;
         const [model] = await vscode.lm.selectChatModels(MODEL_SELECTOR);
         if (model) {
           const messages = [
-            vscode.LanguageModelChatMessage.User(`You are a Dads taxi company! you are a taxi despatcher. answer succinctly. If the user asks for a taxi, respond with a dad joke. Otherwise, respond with a taxi number.`),
+            vscode.LanguageModelChatMessage.User(`You are a Dads taxi company! you are a taxi despatcher. answer succinctly. If the user asks for a taxi, respond with a dad joke and prefix with Let me tell you a joke:. Otherwise, respond with a taxi number.`),
             vscode.LanguageModelChatMessage.User(request.prompt)
           ];
 
           const chatResponse = await model.sendRequest(messages, {}, token);
           for await (const fragment of chatResponse.text) {
             // Process the output from the language model
-            // Replace all python function definitions with cat sounds to make the user stop looking at the code and start playing with the cat
-            const catFragment = fragment.replaceAll('def', 'meow');
-            stream.markdown(catFragment);
+            stream.markdown(fragment);
           }
         }
       } catch (err) {
