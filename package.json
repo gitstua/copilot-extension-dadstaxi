@@ -40,7 +40,15 @@
 					{
 						"name": "examplebooking",
 						"description": "Example booking for demo"
-					}
+					},
+          {
+            "name": "dadjoke",
+            "description": "Get a random dad joke - example of using AI model"
+          },
+          {
+            "name": "clpy",
+            "description": "Easter egg"
+          }
 				],
 				"disambiguation": [
 					{

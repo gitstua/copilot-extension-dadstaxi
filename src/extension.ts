@@ -1,6 +1,6 @@
 import { renderPrompt } from '@vscode/prompt-tsx';
 import * as vscode from 'vscode';
-import { PlayPrompt } from './play';
+import { PlayPrompt } from './dadstaxiai';
 
 const CAT_NAMES_COMMAND_ID = 'cat.namesInEditor';
 const CAT_PARTICIPANT_ID = 'chat-sample.dadstaxi';
@@ -21,6 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
     // To talk to an LLM in your subcommand handler implementation, your
     // extension can use VS Code's `requestChatAccess` API to access the Copilot API.
     // The GitHub Copilot Chat extension implements this provider.
+    
     if (request.command === 'help') {
       //return a help message
       stream.markdown(vscode.l10n.t('Welcome to the dads taxi chat assistant! 🚕🚕🚕'));
@@ -33,7 +34,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
     else if (request.command === 'bookings') {
       //return a message
-      stream.markdown(vscode.l10n.t('you have way too many bookings. Let poor dad rest! \n'));
+      stream.markdown(vscode.l10n.t('You have way too many bookings. Let poor dad rest! \n'));
       stream.markdown(vscode.l10n.t('Thank you for booking a taxi with dads taxi! 🚕🚕🚕'));
     }
     else if (request.command === 'examplebooking') {
@@ -73,8 +74,8 @@ export function activate(context: vscode.ExtensionContext) {
 
       logger.logUsage('request', { kind: 'randomTeach' });
       return { metadata: { command: 'randomTeach' } };
-    } else if (request.command === 'play') {
-      stream.progress('Throwing away the computer science books and preparing to play with some Python code...');
+    } else if (request.command === 'dadjoke') {
+      stream.progress('Formulating a random dad joke...');
       try {
         const [model] = await vscode.lm.selectChatModels(MODEL_SELECTOR);
         if (model) {
@@ -94,15 +95,35 @@ export function activate(context: vscode.ExtensionContext) {
         handleError(logger, err, stream);
       }
 
-      logger.logUsage('request', { kind: 'play' });
-      return { metadata: { command: 'play' } };
-    } else {
+      logger.logUsage('request', { kind: 'dadjoke' });
+      return { metadata: { command: 'dadjoke' } };
+    } else if (request.command === 'clpy') {
+    try {      
+      // Ensure imageUrl is a valid URL pointing to an actual image
+      const imageUrl = 'https://bear-images.sfo2.cdn.digitaloceanspaces.com/cloudystuey/scr-20240919-of6.png'; 
+      
+      // Stream the image
+      //const responseWithImage = `![image](${imageUrl})`;
+      const responseWithImage = `<img src="${imageUrl} />`;
+      stream.markdown(responseWithImage);
+
+// add html to the chat
+const html = ``;
+// stream.html(html); // 
+
+
+    } catch (err) {
+      handleError(logger, err, stream);
+    }
+  
+    logger.logUsage('request', { kind: '' });
+    return { metadata: { command: '' } };
+  } else {
       try {
         const [model] = await vscode.lm.selectChatModels(MODEL_SELECTOR);
         if (model) {
           const messages = [
-            vscode.LanguageModelChatMessage.User(`You are a cat! Think carefully and step by step like a cat would.
-                            Your job is to explain computer science concepts in the funny manner of a cat, using cat metaphors. Always start your response by stating what concept you are explaining. Always include code samples.`),
+            vscode.LanguageModelChatMessage.User(`You are a Dads taxi company! you are a taxi despatcher. answer succinctly. If the user asks for a taxi, respond with a dad joke. Otherwise, respond with a taxi number.`),
             vscode.LanguageModelChatMessage.User(request.prompt)
           ];
 
