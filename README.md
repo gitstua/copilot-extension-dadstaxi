@@ -21,14 +21,22 @@ Related documentation for the demo this is based on can be found here:
 ## Installation
 You can install this as an extension in VSCode from the marketplace - [StuartEggerton.dadstaxi-chat-sample](https://marketplace.visualstudio.com/items?itemName=StuartEggerton.dadstaxi-chat-sample)
 
+## Example usage
+- `@dadstaxi /help` - shows the help message
+- `@dadstaxi /book pickup dog 3PM Wednesday` - book a taxi
+- `@dadstaxi /bookings` - show the bookings
+- `@dadstaxi can you book a cab` - this will refuse to book a cab but will demo calling the language model to get a random dad joke
+
+
 # Developers
 If you install this from the marketplace you can ignore this section. This is the inner loop for how you would develop an extension like this...
 
-## Running the Sample
+## Running the Sample Locally as a developer
 
 - Run `npm install` in terminal to install dependencies
 - Run the `Run Extension` target in the Debug View. This will:
 	- Start a task `npm: watch` to compile the code
 	- Run the extension in a new VS Code window
 	- You will see the @dadstaxi chat participant show in the GitHub Copilot Chat view
+
 ![alt text](image.png)
