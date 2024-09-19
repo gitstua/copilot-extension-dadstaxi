@@ -21,6 +21,9 @@ Related documentation for the demo this is based on can be found here:
 ## Installation
 You can install this as an extension in VSCode from the marketplace - [StuartEggerton.dadstaxi-chat-sample](https://marketplace.visualstudio.com/items?itemName=StuartEggerton.dadstaxi-chat-sample)
 
+# Developers
+If you install this from the marketplace you can ignore this section. This is the inner loop for how you would develop an extension like this...
+
 ## Running the Sample
 
 - Run `npm install` in terminal to install dependencies
