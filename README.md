@@ -18,6 +18,9 @@ Related documentation for the demo this is based on can be found here:
 - https://code.visualstudio.com/api/extension-guides/chat
 - https://code.visualstudio.com/api/extension-guides/language-model
 
+## Installation
+You can install this as an extension in VSCode from the marketplace - [StuartEggerton.dadstaxi-chat-sample](https://marketplace.visualstudio.com/items?itemName=StuartEggerton.dadstaxi-chat-sample)
+
 ## Running the Sample
 
 - Run `npm install` in terminal to install dependencies
