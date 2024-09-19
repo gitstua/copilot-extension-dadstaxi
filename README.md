@@ -40,3 +40,10 @@ If you install this from the marketplace you can ignore this section. This is th
 	- You will see the @dadstaxi chat participant show in the GitHub Copilot Chat view
 
 ![alt text](image.png)
+
+# Privacy
+This extension does not store the bookings - these are static and only exist in memory to generate a response. The language model is not called for any real data, only for generating samples.
+
+If you want to build your own privacy focused extension, you should consider the following:
+- [github.com/Copilot-Extensions](https://github.com/Copilot-Extensions) - to build extensions that work with Copilot supported IDE and in web browsers
+- [Copilot Trust Center](https://copilot.github.trust.page/) - to learn more about how GitHub Copilot keeps your code secure and private
